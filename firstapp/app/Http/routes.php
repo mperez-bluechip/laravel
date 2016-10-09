@@ -12,6 +12,19 @@
 */
 
 Route::get('/', function () {
+  // Schema::create('art', function($newTable){
+  //   $newTable->increments('id');
+  //   $newTable->string('artist');
+  //   $newTable->string('title', 500);
+  //   $newTable->text('description');
+  //   $newTable->date('created');
+  //   $newTable->date('exhibition_date');
+  //   $newTable->timestamps();
+  // });
+  Schema::table('art', function($newTable){
+    $newTable->boolean('alumni');
+    $newTable->dropColumn('exhibition_date');
+  });
     return View::make('welcome');
 });
 
