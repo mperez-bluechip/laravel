@@ -33,11 +33,26 @@
                 font-size: 96px;
             }
         </style>
-        <link rel="stylesheet" href="<?php echo asset('css/main.css'); ?>" type="text/css">
+        <link rel="stylesheet" href={{ URL::asset('css/main.css') }} type="text/css">
     </head>
     <body>
         <div class="container">
-          <h2 class="highlight">Welcome</h2>
+          <h2 class="highlight">Blade has arrived in {{ $theLocation }} on {{ date('M d, Y')}}.</h2>
+          @if($theWeather == 'sunny')
+            <p>It's a beautiful day.</p>
+          @elseif($theWeather == 'stormy')
+            <p>Bring your umbrella!</p>
+          @else
+            <p>No forecast available.</p>
+          @endif
+          <p>Don't miss:</p>
+          <ul style="text-align: left;">
+          @foreach($theLandmarks as $landmark)
+            @unless($landmark == 'Brooklyn Heights')
+            <li>{{ $landmark }}</li>
+            @endunless
+          @endforeach
+          </ul>
             <div class="content">
                 <div class="title">Laravel 5</div>
             </div>
