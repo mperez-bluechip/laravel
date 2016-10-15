@@ -47,3 +47,12 @@ Route::get('/about/classes/{theSubject}', function($theSubject)
 {
     return "Content about the {$theSubject} classes goes here.";
 });
+
+Route::get('signup', function(){
+  return View::make('signup');
+});
+
+Route::post('thanks', function(){
+  $theEmail = Input::get('email');
+  return View::make('thanks')->with('theEmail', $theEmail);
+});
