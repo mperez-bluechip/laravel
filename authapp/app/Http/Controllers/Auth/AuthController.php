@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Psr\Http\Message\ServerRequestInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -68,5 +71,17 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function store(Request $request)
+    {
+        $name = $request->input('name');
+
+        //
+    }
+
+    public function update(Request $request, $id)
+    {
+        //
     }
 }
